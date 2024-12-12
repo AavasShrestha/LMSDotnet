@@ -32,6 +32,8 @@ namespace LMS
             builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
             builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
             builder.Services.AddScoped<ITransactionService, TransactionService>();
+            builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
+
 
 
             builder.Services.AddScoped<JwtTokenHelper>();
