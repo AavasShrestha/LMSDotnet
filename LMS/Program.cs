@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using System.Text;
+using Infrastructure.Email;
 
 namespace LMS
 {
@@ -33,6 +34,11 @@ namespace LMS
             builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
             builder.Services.AddScoped<ITransactionService, TransactionService>();
             builder.Services.AddScoped<IDashboardRepository, DashboardRepository>();
+
+
+
+            builder.Services.AddSingleton<Email>();
+            builder.Services.AddHostedService<DailyEmailService>();
 
 
 
