@@ -25,6 +25,14 @@ namespace LMS.Controllers
             return Ok(transactions);
         }
 
+
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchTransactions([FromQuery] string search)
+        {
+            var transactions = await _mediator.Send(new SearchTransactionsQuery(search));
+            return Ok(transactions);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTransactionById(int id)
         {

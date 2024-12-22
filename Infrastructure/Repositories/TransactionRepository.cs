@@ -15,6 +15,25 @@ namespace Infrastructure.Repositories
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
+
+
+        //Search
+
+        public async Task<IEnumerable<Transactions>> SearchTransactionsAsync(string search = "")
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Flag", "SE");
+                parameters.Add("@Search", search);
+
+                return await connection.QueryAsync<Transactions>(
+                    "SP_Transactions",
+                    parameters,
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
+
         public async Task<IEnumerable<Transactions>> GetAllTransactionsAsync()
         {
             using (var connection = new SqlConnection(_connectionString))
