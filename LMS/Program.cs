@@ -91,6 +91,7 @@ namespace LMS
                     });
             });
 
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -101,8 +102,8 @@ namespace LMS
             }
 
 
-            // Use CORS before routing or authorization middleware
-            app.UseCors("AllowAllOrigins");
+                // Use CORS before routing or authorization middleware
+                app.UseCors("AllowAllOrigins");
 
             app.UseHttpsRedirection();
             app.UseAuthentication(); // Ensure authentication middleware is called

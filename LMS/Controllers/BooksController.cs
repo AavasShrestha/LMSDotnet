@@ -21,6 +21,7 @@ namespace LMS.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllBooks()
         {
+
             var books = await _mediator.Send(new GetAllBooksQuery());
             return Ok(books);
         }
